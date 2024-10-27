@@ -19,7 +19,7 @@ By balancing the users' desire for rewards with their need for efficient waste m
 - **Firebase** - Authentication and database are powered by Firebase. No additional API keys are required as Firebase setup is already provided in the project.
 
 ## Demo Video
-Watch a quick demo of ScrapLink on [YouTube](https://www.youtube.com/your-demo-link) to see the platform in action.
+Watch a quick demo of ScrapLink on [OneDrive](https://amritauniv-my.sharepoint.com/:f:/g/personal/am_en_u4aie22155_am_students_amrita_edu/EtPOM_uoMEFNgE-edrsl7ZcBNmwc5w3DOdvRliqpInUdjw?e=if7yxt) to see the platform in action.
 
 ## Installation and Setup
 To set up ScrapLink locally, follow these steps:
@@ -50,7 +50,7 @@ To set up ScrapLink locally, follow these steps:
    ```
 
 ## Deployment Link
-Access the live version of ScrapLink here: [ScrapLink Live](https://yourusername.github.io/scraplink)
+Access the live version of ScrapLink here: [ScrapLink Live](https://assassinscode-7.github.io/scraplink)
 
 ## Future Scope
 Potential enhancements include:
