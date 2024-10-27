@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Scrap</title>
+    <link rel="stylesheet" href="tracker.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Navbar -->
+        <div class="navbar">
+            <h1>ScrapLink</h1>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#map">Map</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Card Content -->
+    <div class="card">
+        <h3>Track Your Scrap</h3>
+        <p>
+            Track Your Scrap lets you log each recycled item by type, weight, and volume, providing insights into your recycling habits.
+        </p>
+        
+        <!-- Log Scrap Form -->
+        <div class="log-form">
+            <input type="text" placeholder="Type of Scrap (e.g., Plastic, Metal)" id="scrap-type">
+            <input type="number" placeholder="Weight (in kg)" id="scrap-weight">
+            <input type="number" placeholder="Volume (in liters)" id="scrap-volume">
+            <button onclick="logScrap()">Log Scrap</button>
+        </div>
+
+        <!-- Eco-Impact Metrics -->
+        <div class="metrics">
+            <h4>Eco-Impact Metrics</h4>
+            <p>CO₂ Saved: <span id="co2-saved">0</span> kg</p>
+            <p>Resources Conserved: <span id="resources-conserved">0</span> liters</p>
+            <p>Progress Toward Goal</p>
+            <div class="progress-bar">
+                <div class="progress" id="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="tracker.js"></script>
+</body>
+</html>

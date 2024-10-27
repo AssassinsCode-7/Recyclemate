@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Collectors</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: center;
+    overflow: hidden; /* Prevents scrolling if content overflows */
+}
+
+/* Blurred background */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("track_img.jpeg.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px); /* Blur effect */
+    z-index: -1;
+}
+
+/* Centered container with a shadow */
+.container {
+    margin: 0 auto;
+    width: 700px;
+    max-height:800px;
+    border: 1px solid #bfc1c0;
+    border-radius: 10px;
+    background-color: #f3f7f5;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 200px;
+}
+
+/* Search input styling */
+input[type="text"] {
+    padding: 10px;
+    width: calc(100% - 120px);
+    font-size: 20px;
+    border: 1px solid #009688;
+    border-radius: 5px;
+    outline: none;
+    margin: 30px;
+    margin-top: 50px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+button {
+    padding: 10px 15px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #009688;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #036b61;
+}
+
+/* Title styling */
+h2 {
+    color: #053a35;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* Collector list styling */
+#collectorList {
+    padding: 10px;
+    margin: 20px auto;
+    max-width: 500px;
+    border: 1px solid #f4f4f9;
+    background-color: #f4f4f9;
+    list-style: none;
+    border-radius: 5px;
+}
+
+#collectorList li {
+    margin: 8px 0;
+    padding: 12px;
+    background-color: #e9f5ec;
+    border-radius: 10px;
+    border: 1px solid #006b38;
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#collectorList li a {
+    color: #006b38;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+#collectorList li a:hover {
+    color: #00512a;
+}
+</style>
+</head>
+<body>
+    <div class="background"></div>
+<div class="container">
+    <div>
+    <input type="text" id="search-input" placeholder="Enter location" />
+    <button onclick="window.locateAndShowCollectors()">Find Collectors</button>
+</div>
+
+<h2 style="font-size: 30px;">Nearby Collectors</h2>
+<ul id="collectorList"></ul>
+</div>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBzw1mu3okjUv2Jnfv5Mw2B_g2E7uUKF8E",
+        authDomain: "scraplink-5d097.firebaseapp.com",
+        databaseURL: "https://scraplink-5d097-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "scraplink-5d097",
+        storageBucket: "scraplink-5d097.appspot.com",
+        messagingSenderId: "161046137814",
+        appId: "1:161046137814:web:dc72edf2682d9a11e83277",
+        measurementId: "G-ZWJS09K29C"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    function getDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // Earth radius in kilometers
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
+    async function locateAndShowCollectors() {
+        const query = document.getElementById("search-input").value;
+        if (!query) {
+            alert("Please enter a location.");
+            return;
+        }
+
+        try {
+            console.log("Fetching location for query:", query);
+
+            const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`);
+            const locationData = await response.json();
+
+            console.log("Location data received:", locationData);
+
+            if (locationData.length === 0) {
+                alert("Location not found.");
+                return;
+            }
+            
+            const lat = parseFloat(locationData[0].lat);
+            const lon = parseFloat(locationData[0].lon);
+
+            const collectorsRef = ref(db, "scrapCollects");
+            const snapshot = await get(collectorsRef);
+            const collectorListElem = document.getElementById("collectorList");
+            collectorListElem.innerHTML = ""; // Clear the previous list
+
+            if (snapshot.exists()) {
+                snapshot.forEach(childSnapshot => {
+                    const collector = childSnapshot.val();
+                    const distance = getDistance(lat, lon, collector.collector_lat, collector.collector_lon);
+                    if (distance <= 30) { // Within 30 km
+                        const listItem = document.createElement("li");
+                        const link = document.createElement("a");
+
+                        const categories = collector.collector_categories.join(','); // Adjust if collector_categories is already an array
+                       // link.href = `scrap_cat.html?collectorId=${collector.collector_id}&name=${encodeURIComponent(collector.collector_name)}&categories=${encodeURIComponent(categories)}`;
+                        link.href = `scrap_cat.html?collectorId=${collector.collector_id}&name=${collector.collector_name}&categories=${categories}`;
+                        link.textContent = `${collector.collector_name} - ${distance.toFixed(2)} km away`;
+
+                        listItem.appendChild(link);
+                        collectorListElem.appendChild(listItem);
+                    }
+                });
+            } else {
+                collectorListElem.innerHTML = "<li>No collectors found.</li>";
+            }
+        } catch (error) {
+            console.error("Error fetching collectors:", error);
+            alert("An error occurred. Please try again. Details: " + error.message);
+        }
+    }
+
+    window.locateAndShowCollectors = locateAndShowCollectors;
+</script>
+</body>
+</html>

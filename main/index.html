@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Collection Platform</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS for the map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <!-- Navbar -->
+            <div class="navbar">
+                <h1>ScrapLink</h1>
+                <nav class="nav-links" aria-label="Main navigation">
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#map">Map</a>
+                    <a href="#contact">Contact</a>
+                    <a href="services/login.html" id="loginSignupLink">Login/Sign up</a>
+                    
+                    <!-- Profile Dropdown (Hidden initially) -->
+                    <div id="profileDropdown" class="dropdown" style="display: none;">
+                        <button class="profile-btn">Profile</button>
+                        <div class="dropdown-content">
+                            <p id="rewards-display">Rewards: 0</p>
+                            <button id="logoutButton">Logout</button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Hero Section -->
+            <section class="hero" id="home">
+                <div>
+                    <h2>Turn Scrap Into Treasure</h2>
+                    <p>Connecting you to nearby scrap collectors for a cleaner planet.</p>
+                    <a href="#services" class="cta-btn">Get Started</a>
+                </div>
+                <!-- <button class="prev-btn" onclick="prevImage()">&#10094;</button>
+                <button class="next-btn" onclick="nextImage()">&#10095;</button> -->
+            </section>
+        </header>
+        <!-- Main Content -->
+        <main>
+            <!-- Services Section -->
+            <section class="services" id="services">
+                <h2>Our Services</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <a href="services/track.html">
+                            <i class="fas fa-recycle"></i>
+                            <h3>Locate Collectors</h3>
+                            <p>Earn rewards as you recycle and track your scrap contributions.</p>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="services/scrap_cat.html">
+                            <i class="fas fa-sort"></i>
+                            <h3>Scrap Categorization</h3>
+                            <p>Learn how to categorize your junk for efficient recycling.</p>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="#schedule-pickups">
+                            <i class="fas fa-calendar-check"></i>
+                            <h3>Schedule Pickups</h3>
+                            <p>Easily schedule pickups with local collectors near you.</p>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="#map">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Geolocation</h3>
+                            <p>Discover nearby collectors with our geolocation feature.</p>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="services/recycle_edu.html">
+                            <i class="fas fa-book-open"></i>
+                            <h3>Recycling Education</h3>
+                            <p>Understand the importance of recycling and the effects of improper disposal.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Map Section -->
+            <section id="map_space">
+                <h2 class="map-title">Find Nearby Collectors</h2>
+                <!-- Search Container -->
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Search for collectors..." 
+                        aria-label="Search for collectors"
+                    >
+                    <button id="search-button" class="search-btn">Search</button>
+                </div>
+                <!-- Map Container -->
+                <div id="map" class="map-container"></div>
+            </section>
+
+        <!-- Detailed Explanation Sections -->
+        <section id="details">
+            <div class="details-section" id="track-scrap">
+                <h3>Track Your Scrap</h3>
+                <p>Keep a digital log of your recycling efforts, track the types and amounts of scrap, and earn rewards as you reach milestones.</p>
+            </div>
+            <div class="details-section" id="scrap-categorization">
+                <h3>Scrap Categorization</h3>
+                <p>Learn to categorize scrap for efficient recycling, with guides on sorting materials like plastics, metals, and electronics.</p>
+            </div>
+            <div class="details-section" id="schedule-pickups">
+                <h3>Schedule Pickups</h3>
+                <p>Schedule pickups with local collectors to make recycling hassle-free, choosing a convenient time for you.</p>
+            </div>
+            <div class="details-section" id="geolocation">
+                <h3>Geolocation</h3>
+                <p>Discover local scrap collectors in your area with our geolocation feature and find accessible drop-off points.</p>
+            </div>
+            <div class="details-section" id="recycling-education">
+                <h3>Recycling Education</h3>
+                <p>Access resources on recycling practices, materials impact, and proper disposal to become an informed recycler.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 ScrapLink | All Rights Reserved</p>
+            <div class="footer-links">
+                <a href="#home">Home</a> |
+                <a href="#services">Services</a> |
+                <a href="#map">Map</a> |
+                <a href="#contact">Contact</a>
+            </div>
+            <p>Follow us on 
+                <a href="#"><i class="fab fa-facebook-f"></i></a> 
+                <a href="#"><i class="fab fa-twitter"></i></a> 
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script type="module" src="script1.js"></script>
+    <script type="module" src="script2.js"></script>
+    <script type="module" src="services/login_script.js"></script>
+    <script type="module" src="services/map_script.js"></script>
+</body>
+</html>

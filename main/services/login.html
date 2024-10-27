@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login_styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Login</h2>
+        
+        <form id="login-form">
+            <input type="email" id="login-email" placeholder="Email" required />
+            <input type="password" id="login-password" placeholder="Password" required />
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Message for users without an account -->
+        <p class="account-message">
+            Don't have an account? <a href="signup.html">Create one here</a>.
+        </p>
+
+        <div id="auth-message"></div>
+    </div>
+
+    <!-- Stickers in the background -->
+    <img src="https://media.tenor.com/priwctQfBukAAAAM/truck.gif" class="sticker" alt="Moving Truck" />
+    <script type="module" src="login_script.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+}
+.col{
+    margin: 10px auto;
+    width: 900px;
+    max-height:1000px;
+    border: 1px solid #bfc1c0;
+    border-radius: 10px;
+    background-color: #f1f7f7;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    font-size: 20px;
+}
+
+/* Heading Styling */
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-top:10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Paragraph Styling */
+p {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/* Category Container */
+.category {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.category:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Category link styling */
+.category-link {
+    font-size: 20px;
+    cursor: pointer;
+    color: #07655c;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.category-link:hover {
+    color: #056e64;
+    text-decoration: none;
+}
+
+/* Item list styling */
+.item-list {
+    width:200px;
+    margin-left: 20px;
+    list-style: none;
+    padding: 0;
+    font-size: 1em;
+    margin: 3px;;
+}
+
+/* List item styling */
+.item-list li {
+    margin: 8px ;
+    padding: 3px;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+}
+
+/* Button container styling */
+.button-container {
+    margin: 20px;
+    text-align: center;
+}
+li{
+    margin:20px;
+}
+
+/* Button styling */
+button {
+    padding: 12px 20px;
+    background-color: #009688;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #00796b;
+    transform: scale(1.05);
+}
+
+#collectorName{
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+#collectorId{
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.background {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 50vh; /* Adjust height as needed */
+    background-image: url("scrap_img.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8.7;
+     /* Blur effect */
+    z-index: -1;
+}

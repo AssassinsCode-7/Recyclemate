@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management Awareness</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: url('environmentwaste1.avif') ;
+            background-size: cover;
+        }
+        .container {
+            width: 80%;
+            max-width: 1500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.415);
+            /* background: url('environmentwaste1.avif') ; */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #0d5e56;
+            text-align: center;
+        }
+        /* Icon styling for h1 */
+        h1::before {
+            content: '♻️';
+            font-size: 1.2em;
+            margin-right: 10px;
+            color: #008080;
+            position: absolute;
+            left: 200px; /* Adjust as needed */
+            top: 57px; /* Adjust as needed */
+        }
+
+        .dropdown {
+            background-color: #0d5e56;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            margin: 5px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+        .dropdown-content {
+            padding: 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f94d;
+            border-left: 3px solid #0d5e56;
+            margin-bottom: 10px;
+        }
+        .dropdown-content p, .dropdown-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            margin: 8px 0;
+            font-size: 25px;
+        }
+        
+    </style>
+</head>
+<body style="background-color:url('environmentwaste1.avif') ;">
+
+
+
+<div class="container ">
+    <h1 style="font-size: 60px">Waste Management Awareness</h1>
+
+    <button class="dropdown">1. Understanding Waste Management</button>
+    <div class="dropdown-content">
+        <p style="font-size: 25px;">Waste management involves processes to handle waste responsibly—from collection and disposal to recycling and reducing waste output. Effective management reduces environmental impact, conserves resources, and supports sustainability.</p>
+    </div>
+    <br>
+    <button class="dropdown">2. Impact of Waste on Health and Environment</button>
+    <div class="dropdown-content">
+        <ul>
+            <li><strong>Health Risks</strong>: Accumulated waste attracts pests, causes respiratory issues, and exposes people to hazardous chemicals.</li>
+            <li><strong>Environmental Damage</strong>: Landfills release methane, and chemicals can leach into the soil and water.</li>
+            <li><strong>Biodiversity Threats</strong>: Littering harms ecosystems and disrupts animal habitats.</li>
+        </ul>
+    </div>
+    <br>
+    <button class="dropdown">3. Types of Waste and Their Disposal</button>
+    <div class="dropdown-content">
+        <ul>
+            <li><strong>Organic Waste</strong>: Compostable, can be turned into fertilizer.</li>
+            <li><strong>Recyclable Waste</strong>: Plastics, metals, and paper that can be reused.</li>
+            <li><strong>E-Waste</strong>: Electronics with harmful materials that need proper disposal.</li>
+            <li><strong>Hazardous Waste</strong>: Chemicals, batteries, etc., require safe handling.</li>
+        </ul>
+    </div>
+    <br>
+    <button class="dropdown">4. Practical Waste Reduction Tips</button>
+    <div class="dropdown-content">
+        <ul>
+            <li><strong>Reduce</strong>: Minimize single-use plastics and overconsumption.</li>
+            <li><strong>Reuse</strong>: Repurpose items, like jars and old clothes.</li>
+            <li><strong>Recycle</strong>: Follow local recycling guidelines.</li>
+            <li><strong>Compost</strong>: Decompose organic waste for garden soil.</li>
+        </ul>
+    </div>
+    <br>
+    <button class="dropdown">5. Community Initiatives and Involvement </button>
+    <div class="dropdown-content">
+        <ul>
+            <li><strong>Clean-Up Drives</strong>: Organize or join local clean-ups.</li>
+            <li><strong>Awareness Campaigns</strong>: Spread knowledge on waste practices.</li>
+            <li><strong>Workshops</strong>: Teach composting, recycling, and upcycling.</li>
+            <li><strong>Collaborations</strong>: Partner with local groups and schools.</li>
+        </ul>
+    </div>
+    <br>
+    <button class="dropdown">6. Educational Programs for Schools</button>
+    <div class="dropdown-content">
+        <ul>
+            <li><strong>Waste Education</strong>: Teach about waste segregation and conservation.</li>
+            <li><strong>Eco-Clubs</strong>: Establish clubs focused on environmental activities.</li>
+            <li><strong>Interactive Learning</strong>: Use games, quizzes, and workshops.</li>
+        </ul>
+    </div>
+    <br>
+    <button class="dropdown">7. Embrace Technology for Efficient Management</button>
+    <div class="dropdown-content">
+        <ul>
+            <li><strong>Apps and Platforms</strong>: Connect users to recycling centers and schedules.</li>
+            <li><strong>Smart Bins</strong>: Sort and track waste to improve recycling accuracy.</li>
+            <li><strong>Data Analysis</strong>: Identify waste patterns to enhance management.</li>
+        </ul>
+    </div>
+    <br>
+    <button class="dropdown">8. Support Waste Management Policies and Legislation</button>
+    <div class="dropdown-content">
+        <p>Support policies that enforce recycling programs, reduce plastic usage, and manage hazardous waste. Encourage businesses to implement eco-friendly practices.</p>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.dropdown').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+/* Reset some default styles for better cross-browser consistency */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Change to your preferred font */
+    background-color: #f4f4f4; /* Light background for contrast */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents scroll bars from appearing */
+    position: relative; /* Required for absolute positioning of background */
+}
+
+/* Background animation */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #faf9f7, #fdfdfd); /* Cream color gradient */
+    z-index: -1; /* Behind all other content */
+    animation: gradient 15s ease infinite; /* Slower animation for a smooth effect */
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Container for authentication */
+.auth-container {
+    background-color: rgba(255, 255, 255, 0.9); /* White background with some transparency */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow for depth */
+    padding: 40px; /* Increased space inside the container */
+    width: 400px; /* Fixed width for the form */
+    text-align: center; /* Center text in the container */
+    position: relative; /* Allows for sticker positioning */
+    z-index: 1; /* Ensure container is above the background */
+}
+
+/* Headings */
+h2 {
+    margin-bottom: 20px; /* Space below the heading */
+    color: #333; /* Dark text for contrast */
+}
+
+/* Form elements */
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Full width inputs */
+    padding: 15px; /* Increased space inside the inputs */
+    margin-bottom: 15px; /* Space below each input */
+    border: 1px solid #fdfafa; /* Light border */
+    border-radius: 5px; /* Rounded corners for inputs */
+    font-size: 16px; /* Font size for input text */
+}
+
+/* Button styles */
+button {
+    background-color: #064714; /* Primary button color */
+    color: white; /* White text on the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners for the button */
+    padding: 15px; /* Increased space inside the button */
+    width: 100%; /* Full width button */
+    cursor: pointer; /* Change cursor to pointer */
+    font-size: 16px; /* Font size for button text */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Account message styling */
+.account-message {
+    margin-top: 15px; /* Space above the message */
+    color: #666; /* Slightly lighter text for the message */
+}
+
+/* Auth message area */
+#auth-message {
+    margin-top: 20px; /* Space above the auth message */
+    color: red; /* Red text for errors */
+}
+
+ /* Truck animation */
+.sticker {
+    position: absolute;
+    bottom: 0; /* Place it at the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Offset to center */
+    width: 250px; /* Increased size */
+    animation: moveTruck 10s linear infinite; /* Animation for the truck */
+    pointer-events: none;
+    opacity: 0.75; /* Prevent pointer events on the truck */
+}
+@keyframes moveTruck {
+    0% {
+        left: -150px; /* Start off-screen */
+    }
+    100% {
+        left: 100vw; /* Move to the right off-screen */
+    }
+}

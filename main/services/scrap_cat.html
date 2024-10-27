@@ -1,0 +1,87 @@
+!<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collector Scrap Categories</title>
+    <link rel="stylesheet" href="cat_style.css"> <!-- Ensure this path is correct -->
+</head>
+<body>
+    <div class="col">
+    <h2>Scrap Categories for<span id="collectorName"></span></h2>
+    <p>Collector ID: <span id="collectorId"></span></p>
+    <div id="categoriesContainer"></div>
+    <div class="button-container">
+        <button onclick="confirmOrder()">Confirm Your Selection</button>
+    </div>
+</div>
+<div class="background"></div>
+    <script>
+    const availableCategories = {
+        plastics: ['Plastic Bottles', 'Food Containers', 'Plastic Bags','others'],
+        metals: ['Aluminum Cans', 'Copper Wires', 'Iron Scraps','others'],
+        electronics: ['Old Phones', 'Computer Parts', 'Batteries','others'],
+        clothes: ['T-Shirts', 'Jeans', 'Jackets','others'],
+        others:[] // Example items for clothes category
+    };
+
+    // Function to get query parameters
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            collectorId: params.get('collectorId'),
+            name: params.get('name'),
+            categories: params.get('categories') ? params.get('categories').split(',') : []
+            
+        };
+    }
+
+    // Function to render categories
+    function renderCategories(collectorDetails) {
+        const categoriesContainer = document.getElementById('categoriesContainer');
+        // Clear existing content
+        categoriesContainer.innerHTML = '';
+        // Loop through the collector's categories and render them
+        collectorDetails.categories.forEach(category => {
+            if (availableCategories[category]) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                categoryDiv.innerHTML = `
+                    <h4><a href="#" class="category-link" onclick="toggleItems('${category}'); return false;">${category.charAt(0).toUpperCase() + category.slice(1)}</a></h4>
+                    <ul id="${category}" class="item-list" style="display:none;">
+                        ${availableCategories[category].map(item => `
+                            <li><input type="checkbox" name="${category}-item" value="${item}"> ${item}</li>
+                        `).join('')}
+                    </ul>
+                `;
+                categoriesContainer.appendChild(categoryDiv);
+            }
+        });
+    }
+
+    // Function to toggle visibility of item lists
+    function toggleItems(categoryId) {
+        const itemList = document.getElementById(categoryId);
+        itemList.style.display = itemList.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Function to confirm the order
+    function confirmOrder() {
+        alert("Your selection has been confirmed!");
+        // Redirect to the home page after 3 seconds
+        setTimeout(() => {
+            window.location.href = "/main/index.html";
+        }, 2000);
+    }
+
+    // Initialize the page
+    const collectorDetails = getQueryParams();
+    document.getElementById('collectorName').textContent = collectorDetails.name;
+    document.getElementById('collectorId').textContent = collectorDetails.collectorId;
+
+    // Render categories based on collector details
+    renderCategories(collectorDetails);
+    document.getElementById("order-pickup-btn").addEventListener("click", confirmOrder);
+</script>
+</body>
+</html>
